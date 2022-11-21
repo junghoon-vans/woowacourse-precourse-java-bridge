@@ -5,6 +5,14 @@ package bridge;
  */
 public class BridgeGame {
 
+    private final InputView inputView;
+    private final OutputView outputView;
+
+    public BridgeGame() {
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
+    }
+
     /**
      * 사용자가 칸을 이동할 때 사용하는 메서드
      * <p>
