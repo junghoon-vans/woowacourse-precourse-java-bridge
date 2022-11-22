@@ -2,7 +2,9 @@ package bridge.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import bridge.command.MoveCommand;
 import bridge.validation.BridgeSizeValidator;
+import bridge.validation.CommandValidator;
 import bridge.validation.Validator;
 
 /**
@@ -27,7 +29,13 @@ public class InputView {
      * 사용자가 이동할 칸을 입력받는다.
      */
     public String readMoving() {
-        return null;
+        System.out.println("이동할 칸을 선택해주세요. (위: U, 아래: D)");
+        String input = readLine();
+
+        Validator commandValidator = new CommandValidator(MoveCommand.values());
+        commandValidator.validate(input);
+
+        return input;
     }
 
     /**
