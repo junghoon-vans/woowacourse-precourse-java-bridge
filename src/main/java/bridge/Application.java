@@ -6,6 +6,7 @@ public class Application {
         try {
             BridgeGame bridgeGame = new BridgeGame();
             bridgeGame.start();
+            bridgeGame.move();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }

@@ -14,6 +14,7 @@ public class BridgeGame {
     private final BridgeMaker bridgeMaker;
 
     private List<String> bridge;
+    private int progress;
 
     public BridgeGame() {
         this.inputView = new InputView();
@@ -21,6 +22,7 @@ public class BridgeGame {
 
         BridgeNumberGenerator bridgeNumberGenerator = new BridgeRandomNumberGenerator();
         this.bridgeMaker = new BridgeMaker(bridgeNumberGenerator);
+        this.progress = 0;
     }
 
     /**
@@ -38,6 +40,12 @@ public class BridgeGame {
      * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public void move() {
+        boolean success = true;
+        while (success && progress < bridge.size()) {
+            String command = this.inputView.readMoving();
+            success = bridge.get(progress).equals(command);
+            progress++;
+        }
     }
 
     /**
