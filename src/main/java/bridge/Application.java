@@ -8,7 +8,7 @@ public class Application {
             bridgeGame.start();
             bridgeGame.move();
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }
