@@ -2,6 +2,7 @@ package bridge;
 
 import bridge.view.InputView;
 import bridge.view.OutputView;
+import java.util.List;
 
 /**
  * 다리 건너기 게임을 관리하는 클래스
@@ -10,10 +11,16 @@ public class BridgeGame {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private final BridgeMaker bridgeMaker;
+
+    private List<String> bridge;
 
     public BridgeGame() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
+
+        BridgeNumberGenerator bridgeNumberGenerator = new BridgeRandomNumberGenerator();
+        this.bridgeMaker = new BridgeMaker(bridgeNumberGenerator);
     }
 
     /**
@@ -21,6 +28,8 @@ public class BridgeGame {
      */
     public void start() {
         this.outputView.printStartGame();
+        int bridgeSize = this.inputView.readBridgeSize();
+        this.bridge = bridgeMaker.makeBridge(bridgeSize);
     }
 
     /**
